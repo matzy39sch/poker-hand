@@ -193,7 +193,7 @@ defmodule Poker do
     end
   end
 
-   @doc """
+  @doc """
   ## Examples
       iex> Poker.evaluate_hand([{2, "H"}, {3, "S"}, {4, "S"}, {7, "H"}, {14, "D"}])
       %{high_card: {14, "Ace"}, nr: [], rank_name: "High card", rank_value: 0}
