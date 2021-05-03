@@ -140,6 +140,15 @@ defmodule Poker do
     end
   end
 
+  @doc """
+  ## Examples
+      iex> Poker.evaluate_by_order([{2, "H"}, {3, "S"}, {4, "S"}, {7, "H"}, {14, "D"}])
+      %{high_card: {14, "Ace"}, nr: [], rank_name: "High card", rank_value: 0}
+      iex> Poker.evaluate_by_order([{2, "H"}, {3, "S"}, {4, "S"}, {5, "H"}, {6, "D"}])
+      %{high_card: {6, "6"}, nr: [], rank_name: "High card", rank_value: 0}
+      iex> Poker.evaluate_by_order([{2, "S"}, {3, "S"}, {4, "S"}, {5, "S"}, {6, "S"}])
+      %{high_card: {6, "6"}, nr: [], rank_name: "High card", rank_value: 0}
+  """
   @spec evaluate_by_order(hand) :: String.t()
   def evaluate_by_order(hand) do
     pattern =
@@ -184,6 +193,15 @@ defmodule Poker do
     end
   end
 
+   @doc """
+  ## Examples
+      iex> Poker.evaluate_hand([{2, "H"}, {3, "S"}, {4, "S"}, {7, "H"}, {14, "D"}])
+      %{high_card: {14, "Ace"}, nr: [], rank_name: "High card", rank_value: 0}
+      iex> Poker.evaluate_hand([{2, "H"}, {3, "S"}, {4, "S"}, {5, "H"}, {6, "D"}])
+      %{high_card: {6, "6"}, nr: {6, "6"}, rank_name: "Straight", rank_value: 4}
+      iex> Poker.evaluate_hand([{2, "S"}, {3, "S"}, {4, "S"}, {5, "S"}, {6, "S"}])
+      %{high_card: {6, "6"}, nr: {6, "6"}, rank_name: "Straight flush", rank_value: 8}
+  """
   @spec evaluate_hand(hand) :: String.t()
   def evaluate_hand(hand) do
     case {is_straight(hand), is_flush(hand)} do
